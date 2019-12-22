@@ -1,9 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useForm from 'react-hook-form';
 
 import * as yup from 'yup';
 import logo from '~/assets/logo.svg';
+
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Nome é obrigatório'),
@@ -20,12 +23,15 @@ const validationSchema = yup.object().shape({
 // import { Container } from './styles';
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
   const { register, handleSubmit, errors } = useForm({
     validationSchema,
   });
 
-  const onSubmit = data => {
-    console.tron.log(data);
+  const onSubmit = ({ name, email, password }) => {
+    dispatch(signUpRequest(name, email, password));
   };
 
   return (
@@ -60,7 +66,9 @@ export default function SignUp() {
           </p>
         )}
 
-        <button type="submit">Criar Conta</button>
+        <button type="submit">
+          {loading ? 'Carregando...' : 'Criar Conta'}
+        </button>
         <Link to="/">Ja tenho login</Link>
       </form>
     </>

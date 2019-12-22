@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useForm from 'react-hook-form';
 
@@ -20,6 +20,8 @@ const validationSchema = Yup.object().shape({
 
 export default function SignIn() {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
   const { register, handleSubmit, errors } = useForm({
     validationSchema,
   });
@@ -55,7 +57,7 @@ export default function SignIn() {
           </p>
         )}
 
-        <button type="submit">Acessar</button>
+        <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
         <Link to="/register">Criar conta gratuita</Link>
       </form>
     </>
