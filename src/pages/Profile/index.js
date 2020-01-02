@@ -6,8 +6,8 @@ import AvatarInput from './AvatarInput';
 
 import { Container } from './styles';
 
-import { updateProfileRequest } from '~/store/modules/user/actions';
-import { signOut } from '~/store/modules/auth/actions';
+import { updateProfileRequest } from '../../store/modules/user/actions';
+import { signOut } from '../../store/modules/auth/actions';
 
 export default function Profile() {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { updateProfileSuccess, updateProfileFailure } from './actions';
 
-import api from '~/services/api';
+import api from '../../../services/api';
 
 export function* updateProfile({ payload }) {
   try {

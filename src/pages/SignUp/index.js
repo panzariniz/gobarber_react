@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import useForm from 'react-hook-form';
 
 import * as yup from 'yup';
-import logo from '~/assets/logo.svg';
+import logo from '../../assets/logo.svg';
 
-import { signUpRequest } from '~/store/modules/auth/actions';
+import { signUpRequest } from '../../store/modules/auth/actions';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Nome é obrigatório'),

@@ -5,9 +5,9 @@ import useForm from 'react-hook-form';
 
 import * as Yup from 'yup';
 
-import { signInRequest } from '~/store/modules/auth/actions';
+import { signInRequest } from '../../store/modules/auth/actions';
 
-import logo from '~/assets/logo.svg';
+import logo from '../../assets/logo.svg';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
